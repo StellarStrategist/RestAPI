@@ -1,0 +1,30 @@
+package com.example.movie.api.login.entity;
+
+import lombok.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+
+import java.util.List;
+
+@Document(collection = "movies")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Movie {
+    @Id
+    private ObjectId id;//movie id
+    private String imdbId;
+    private String title;
+    private String releaseDate;
+    private String trailerLink;
+    private String poster;
+    private List<String> genres;
+    private List<String> backdrops;
+    @DocumentReference
+    private List<Review> reviews;
+}
+
